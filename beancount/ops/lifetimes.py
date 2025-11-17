@@ -204,6 +204,9 @@ def required_daily_prices(lifetimes_map, date_last, weekdays_only=False):
         if currency_pair[1] is None:
             continue
         for date_begin, date_end in intervals:
+            if date_begin >= date_end:
+                continue
+
             # Find first Weekday starting on or before minimum date.
             date = date_begin
             if weekdays_only:
